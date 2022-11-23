@@ -1,66 +1,57 @@
-import React, { ReactNode } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import ArrowRight from './images/downwards_right.svg'
 import ArrowLeft from './images/downwards_left.svg'
 import { Header } from 'components/elements'
 import device from 'themes/device'
+import { localize } from 'components/localization'
 
 type ScheduleProps = {
-    time?: ReactNode
+    time?: string | number
     id?: string
-    name?: ReactNode
-    topic?: ReactNode
+    name?: string
+    topic?: string
 }
-
 type DataProps = {
     timings: ScheduleProps[]
-    free_time: ReactNode
+    free_time: string | number
     speakers: ScheduleProps[]
 }
-
 type ScheduleConferenceProps = {
-    id?: string
-    title?: ReactNode
-    date?: ReactNode
-    period?: ReactNode
-    data?: DataProps[]
+    id: string
+    title: string
+    date: string
+    period: string
+    data: DataProps[]
 }
-
 type ConferenceProps = {
     item: ScheduleConferenceProps
     key: string
 }
-
 const MainContainer = styled.div`
     display: flex;
     justify-content: center;
 `
-
 const Container = styled.div`
     padding-bottom: 80px;
 `
-
 const HeaderTitle = styled.div`
     padding-bottom: 80px;
 `
-
 const WrapperContainer = styled.div`
     display: flex;
     flex-direction: row;
+    align-items: center;
     justify-content: space-between;
     width: 100%;
-    max-width: 700px;
+    max-width: 995px;
 `
 
 const ImageContainer = styled.div`
-    display: flex;
-    justify-content: center;
-
     @media ${device.tablet} {
         margin-left: 40px;
     }
 `
-
 const TimeWrapper = styled.div`
     display: flex;
     flex-direction: column;
@@ -74,7 +65,6 @@ const TimeWrapper = styled.div`
         margin-left: 40px;
     }
 `
-
 const ContentWrapper = styled.div`
     display: flex;
     flex-direction: column;
@@ -92,13 +82,13 @@ const ScheduleConference = ({ item }: ConferenceProps) => {
         <>
             <HeaderTitle key={id}>
                 <Header weight="400" type="subtitle-1" align="center" pt="16px">
-                    {title}
+                    {localize(title)}
+                </Header>
+                <Header weight="700" type="subtitle-1" align="center" pt="16px">
+                    {localize(date)}
                 </Header>
                 <Header weight="400" type="subtitle-1" align="center" pt="16px">
-                    {date}
-                </Header>
-                <Header weight="400" type="subtitle-1" align="center" pt="16px">
-                    {period}
+                    {localize(period)}
                 </Header>
             </HeaderTitle>
 
@@ -112,6 +102,7 @@ const ScheduleConference = ({ item }: ConferenceProps) => {
                                         {item.timings.map((item) => {
                                             return (
                                                 <Header
+                                                    as="div"
                                                     type="heading-3"
                                                     align="center"
                                                     weight="700"
@@ -135,20 +126,22 @@ const ScheduleConference = ({ item }: ConferenceProps) => {
                                             return (
                                                 <>
                                                     <Header
+                                                        as="div"
                                                         align="left"
                                                         type="subtitle-1"
                                                         weight="700"
-                                                        width="230px"
+                                                        width="400px"
                                                     >
-                                                        {item.name}
+                                                        {localize(item.topic)}
                                                     </Header>
                                                     <Header
+                                                        as="div"
                                                         align="left"
                                                         type="subtitle-1"
                                                         weight="400"
                                                         mb="32px"
                                                     >
-                                                        {item.topic}
+                                                        {localize(item.name)}
                                                     </Header>
                                                 </>
                                             )
@@ -157,6 +150,7 @@ const ScheduleConference = ({ item }: ConferenceProps) => {
                                 </WrapperContainer>
                             </MainContainer>
                             <Header
+                                as="div"
                                 type="heading-3"
                                 align="center"
                                 weight="400"

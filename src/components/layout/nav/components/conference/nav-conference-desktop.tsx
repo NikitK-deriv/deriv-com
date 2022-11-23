@@ -93,7 +93,7 @@ const NavConferenceDesktop = () => {
 
                 <NavLinkCard active="spealers" to="/conference/speakers/" title={'Speakers'} />
 
-                <NavLinkCard active="schedule" to="/conference/schedule/" title={'The Schedule'} />
+                <NavLinkCard active="schedule" to="/conference/timeline/" title={'The Schedule'} />
             </NavigationBar>
         </StyledWrapper>
     )
