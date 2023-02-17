@@ -1,9 +1,9 @@
 import { TContent, THeaderItem } from './_types'
 
 export const header_items: THeaderItem[] = [
-    { id: 0, text: '_t_Simple._t_' },
-    { id: 1, text: '_t_Flexible._t_' },
-    { id: 2, text: '_t_Reliable._t_' },
+    { id: 0, text: '_t_Simplest._t_' },
+    { id: 1, text: '_t_Flexiblest._t_' },
+    { id: 2, text: '_t_Reliablest._t_' },
 ]
 
 export const contents: TContent[] = [
