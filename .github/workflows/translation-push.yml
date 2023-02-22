@@ -18,15 +18,14 @@ env:
  BRANCH: ${{ github.event.workflow_run.head_branch }}
 jobs:
     push-translation:
-        if: | 
-          ${{ github.vars.is_proceed == 'true' }}
+        if: github.vars.is_proceed == 'true'
         runs-on: ubuntu-latest
         steps:
             - name: 'Source: [${{github.event.workflow_run.head_repository.full_name}}/${{ github.event.workflow_run.head_branch }}]'
               run: |
                CLEAN_BRANCH="${BRANCH//[^[:alnum:]-_]/}"
 
-               echo " ${{github.vars.is_proceed}} is_proceed Pushing strings and translations from ${{github.event.workflow_run.head_repository.full_name}}/$CLEAN_BRANCH"
+               echo "Pushing strings and translations from ${{github.event.workflow_run.head_repository.full_name}}/$CLEAN_BRANCH"
             - name: Checkout 🛎️
               uses: actions/checkout@v2.3.1
               with:
