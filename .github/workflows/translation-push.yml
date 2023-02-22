@@ -18,7 +18,8 @@ env:
  BRANCH: ${{ github.event.workflow_run.head_branch }}
 jobs:
     push-translation:
-        if: ${{ github.vars.is_proceed == 'true' }}
+        if: |
+          ${{ github.vars.is_proceed == 'true' }}
         runs-on: ubuntu-latest
         steps:
             - name: 'Source: [${{github.event.workflow_run.head_repository.full_name}}/${{ github.event.workflow_run.head_branch }}]'
