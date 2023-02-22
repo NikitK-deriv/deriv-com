@@ -2,7 +2,7 @@ const github = require('@actions/github')
 const core = require('@actions/core')
 
 const translation_flows = ['translation', 'stp']
-const special_characters = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')']
+const special_characters = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '404']
 
 async function run() {
     const is_proceed =
