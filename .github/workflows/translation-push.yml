@@ -19,7 +19,7 @@ env:
 jobs:
     push-translation:
         if: | 
-          github.v1ars.is_proceed == 'true'
+          github.vars.is_proceed == 'true'
         runs-on: ubuntu-latest
         steps:
             - name: 'Source: [${{github.event.workflow_run.head_repository.full_name}}/${{ github.event.workflow_run.head_branch }}]'
