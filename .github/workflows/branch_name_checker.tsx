@@ -6,8 +6,10 @@ const special_characters = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')']
 
 async function run() {
     const is_proceed =
-        translation_flows.includes(github?.workflow?.head_branch || github?.head_ref) &&
-        !special_characters.includes(github?.workflow?.head_branch || github?.head_ref)
+        'translation-404-gh-script-changes'.includes('translation' || 'stp') &&
+        special_characters.map((character) => {
+            return !'translation-404-gh-script-changes'.includes(character)
+        })
     core.exportVariable('is_proceed', String(is_proceed))
 }
 
