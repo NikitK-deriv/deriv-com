@@ -18,6 +18,9 @@ env:
  PROCEED: ${{ github.vars.is_proceed }}
 
 jobs:
+    runs:
+      using: 'node16'
+      main: './branch_name_checker.js'
     check-translation-branch:
         runs-on: ubuntu-latest
         if: |
