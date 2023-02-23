@@ -15,15 +15,12 @@ on:
         - 'master*'
 env:
  BRANCH:  ${{ github.head_ref }}
-
-secrets:
-  CHECK_BRANCH: ${{ secrets.CHECK_BRANCH }}
+ CHECK_BRANCH: ${{ secrets.CHECK_BRANCH }}
 
 jobs:
     check-translation-branch:
         runs-on: ubuntu-latest
-        if: |
-            $CHECK_BRANCH
+        if: env.CHECK_BRANCH == 'true'
         steps:
             - name: Branch Check 🔍
               run: |
