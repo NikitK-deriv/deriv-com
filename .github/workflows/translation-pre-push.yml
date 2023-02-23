@@ -19,12 +19,13 @@ env:
 jobs:
     check-translation-branch:
         runs-on: ubuntu-latest
-        if: ${{ github.vars.is_proceed == 'true' }}
+        if: |
+          ${{ github.vars.is_proceed == 'true' }}
         steps:
             - name: Branch Check 🔍
               run: |
                 CLEAN_BRANCH="${BRANCH//[^[:alnum:]-_]/}"
-                
+                echo ${{ github.vars.is_proceed }}
                 echo "$CLEAN_BRANCH is a valid branch for translation workflow"
 
               
