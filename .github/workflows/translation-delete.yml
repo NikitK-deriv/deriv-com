@@ -19,7 +19,7 @@ env:
 jobs:
     delete-translation:
         if: |
-          ${{ github.vars.is_proceed == 'true' }}
+          github.vars.is_proceed == 'true'
         runs-on: ubuntu-latest
         steps:
             - name: 'Branch [${{ github.event.workflow_run.head_branch }}]'
