@@ -8,8 +8,6 @@ async function run() {
         special_characters.some((character) => {
             return !'translation-404-gh-script-changes'.includes(character)
         })
-            ? github.head_ref
-            : ''
     core.exportVariable('is_proceed', String(is_proceed))
 }
 

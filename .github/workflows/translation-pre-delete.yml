@@ -19,7 +19,7 @@ env:
 jobs:
    check-translation-branch:
         runs-on: ubuntu-latest
-        if: github.repository == github.vars.is_proceed
+        if: github.vars.is_proceed == 'true'
         steps:
             - name: Branch Check 🔍
               run: |
