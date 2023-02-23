@@ -13,16 +13,16 @@ on:
     types: [opened, reopened, synchronize]
     branches:
         - 'master*'
+
+runs:
+  using: 'node16'
+  main: './branch_name_checker.js'
+
 env:
  BRANCH:  ${{ github.head_ref }}
  PROCEED: ${{ github.vars.is_proceed }}
 
 jobs:
-    checker:
-      runs-on: ubuntu-latest
-      runs:
-        using: 'node16'
-        main: './branch_name_checker.js'
     check-translation-branch:
         runs-on: ubuntu-latest
         if: |
