@@ -16,22 +16,14 @@ on:
 env:
  BRANCH:  ${{ github.head_ref }}
 
+secrets:
+  CHECK_BRANCH: ${{ secrets.CHECK_BRANCH }}
+
 jobs:
     check-translation-branch:
         runs-on: ubuntu-latest
         if: |
-            (startsWith(github.head_ref, 'translation') || startsWith(github.head_ref, 'stp')) &&
-            !contains(github.head_ref, '!') &&
-            !contains(github.head_ref, '@') &&   
-            !contains(github.head_ref, '#') &&   
-            !contains(github.head_ref, '$') &&   
-            !contains(github.head_ref, '%') &&   
-            !contains(github.head_ref, '^') &&   
-            !contains(github.head_ref, '&') &&   
-            !contains(github.head_ref, '*') &&   
-            !contains(github.head_ref, '(') &&   
-            !contains(github.head_ref, ')') &&
-            !contains(github.head_ref, '404')
+            $CHECK_BRANCH
         steps:
             - name: Branch Check 🔍
               run: |
