@@ -15,6 +15,7 @@ on:
         - 'master*'
 env:
  BRANCH:  ${{ github.head_ref }}
+ PROCEED: ${{ github.vars.is_proceed }}
 
 jobs:
     check-translation-branch:
@@ -25,7 +26,7 @@ jobs:
             - name: Branch Check 🔍
               run: |
                 CLEAN_BRANCH="${BRANCH//[^[:alnum:]-_]/}"
-                echo "here should exist boolean: ${{ github.vars.is_proceed }}"
+                echo "here should exist boolean: $PROCEED"
                 echo "$CLEAN_BRANCH is a valid branch for translation workflow"
 
               
