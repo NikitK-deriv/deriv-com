@@ -21,7 +21,17 @@ jobs:
         runs-on: ubuntu-latest
         if: |
             (startsWith(github.head_ref, 'translation') || startsWith(github.head_ref, 'stp')) &&
-            !contains(github.head_ref, '!' || '@' || '#' || '$' || '%' || '^' || '&' || '*' || '(' || ')' || '404')
+            !contains(github.head_ref, '!') &&
+            !contains(github.head_ref, '@') &&   
+            !contains(github.head_ref, '#') &&   
+            !contains(github.head_ref, '$') &&   
+            !contains(github.head_ref, '%') &&   
+            !contains(github.head_ref, '^') &&   
+            !contains(github.head_ref, '&') &&   
+            !contains(github.head_ref, '*') &&   
+            !contains(github.head_ref, '(') &&   
+            !contains(github.head_ref, ')') &&
+            !contains(github.head_ref, '404')
         steps:
             - name: Branch Check 🔍
               run: |
