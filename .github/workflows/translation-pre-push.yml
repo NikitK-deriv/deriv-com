@@ -25,7 +25,7 @@ jobs:
             - name: Branch Check 🔍
               run: |
                 CLEAN_BRANCH="${BRANCH//[^[:alnum:]-_]/}"
-                echo ${{ github.vars.is_proceed }}
+                echo "here should exist boolean: ${{ github.vars.is_proceed }}"
                 echo "$CLEAN_BRANCH is a valid branch for translation workflow"
 
               
