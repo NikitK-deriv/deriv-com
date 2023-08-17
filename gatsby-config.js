@@ -347,5 +347,23 @@ module.exports = {
                 generateStatsFile: process.env.GENERATE_JSON_STATS === 'true',
             },
         },
+        {
+            resolve: `gatsby-plugin-rudderstack`,
+            options: {
+                prodKey: process.env.RUDDERSTACK_PROD_KEY,
+                devKey: process.env.RUDDERSTACK_DEV_KEY,
+                trackPage: true,
+                trackPageDelay: 50,
+                delayLoad: false,
+                delayLoadTime: 1000,
+                manualLoad: false,
+                loadType: 'default',
+                loadOptions: {
+                    onLoaded: (function () {
+                        console.log('rudderstack works')
+                    })(),
+                },
+            },
+        },
     ],
 }
