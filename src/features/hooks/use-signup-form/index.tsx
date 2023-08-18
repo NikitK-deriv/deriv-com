@@ -3,7 +3,8 @@ import Cookies from 'js-cookie'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
 import { navigate } from 'gatsby'
-import { getCookiesObject, getCookiesFields, getDataObjFromCookies } from 'common/cookies'
+import { onRudderStack } from 'features/utils/analytic/rudder-stack'
+import { getCookiesFields, getCookiesObject, getDataObjFromCookies } from 'common/cookies'
 import { validation_regex } from 'common/validation'
 import apiManager from 'common/websocket'
 import { getLanguage, isBrowser } from 'common/utility'
@@ -47,6 +48,8 @@ const useSignupForm = () => {
     })
 
     const onSignup = ({ email }: FormData) => {
+        onRudderStack()
+
         const formatted_email = getVerifyEmailRequest(email)
         apiManager
             .augmentedSend('verify_email', {
@@ -63,6 +66,7 @@ const useSignupForm = () => {
                 navigate(success_link, { replace: true })
             })
             .catch((reason) => {
+                onRudderStack()
                 signUpForm.setError('email', {
                     message: reason.error.code,
                 })

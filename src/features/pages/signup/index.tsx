@@ -1,13 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { signup_wrapper } from './signup.module.scss'
 import SignUpContent from './signup.content'
 import SignUpFormContainer from './form-container'
 import Layout from 'features/components/templates/layout'
 import StaticNav from 'features/components/templates/navigation/static-nav'
+import { onRudderStack } from 'features/utils/analytic/rudder-stack'
 import { SEO } from 'components/containers'
 import Flex from 'features/components/atoms/flex-box'
 
 const SignUp = () => {
+    useEffect(() => {
+        onRudderStack()
+    }, [])
+
     return (
         <Layout>
             <SEO

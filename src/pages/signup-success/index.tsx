@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { navigate } from 'gatsby'
-import { getLanguage } from '../../common/utility'
+import { getLanguage } from 'common/utility'
+import { onRudderStack } from 'features/utils/analytic/rudder-stack'
 import SignUpSuccessContainer from 'features/pages/signup-success'
 import { WithIntl } from 'components/localization'
 
@@ -17,6 +18,8 @@ const SignupSuccess = () => {
             else {
                 navigate('/', { replace: true })
             }
+        } else {
+            onRudderStack()
         }
     }, [])
 
