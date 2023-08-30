@@ -190,6 +190,7 @@ const scrollToAnchor = (location) => {
 
 export const onRouteUpdate = ({ location }) => {
     scrollToAnchor(location)
+    window.rudderanalytics && window.rudderanalytics.page()
     checkDomain()
 
     const dataLayer = window.dataLayer
